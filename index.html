@@ -37,6 +37,36 @@
                 padding: 20px;
             }
         }
+                .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #ddd;
+        }
+        .progress {
+            width: 0;
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.3s ease;
+        }
+        .chapter {
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        .chapter.read {
+            opacity: 1;
+        }
+        #progress-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
