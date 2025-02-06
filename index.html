@@ -86,5 +86,32 @@
             <h2>16</h2>
             <p>এরপর দ্বিতীয় বিশ্বযুদ্ধ এল, উপনিবেশ আমল শেষ হল, সেই সাথে ভারতীয় আফিম বানিজ্যেরও সমাপ্তি ঘটল। কিন্তু বাংলার আফিমের গল্প যেখানে শেষ, সেখান থেকেই আরেকটি নতুন গল্প শুরু। বাংলার আফিমের গল্প বলতে গিয়ে এত এত ইতিহাস কপচানোকে ধান ভানতে শীবের গীত মনে হতেই পারে। কিন্তু বর্তমান অবস্থা পুরোপুরি বুঝে উঠার জন্য অতীতও একটু ঘুরে আসা জরুরি। কারণ কথায় আছে না, হিস্টরি রিপিটস ইট সেলফ। এ কারণেই দ্বারকানাথের অবতারনা করতে হল। সেই আমলের দ্বারকানাথের সাথে এই আমলের বদির আদতে কোন পার্থক্য নেই। উৎপাদক-সরবরাহকারী-ভোক্তার চক্র বুঝাতে ও আফিম ট্রেডের ভুক্তভুগী হিসেবে চায়নার প্রসঙ্গটাও তাই স্বাভাবিকভাবে লেখায় চলে এসেছে। আফিম রহস্যের সমাধান সহজ কোন বিষয় নয়। কেউ কেন আফিম সেবন করে, কিভাবে এর প্রতি আসক্ত হয়, কেউ কেন আফিম চাষ করে, কেউ কেন আফিম চাষ করায়, কিভাবে এর কেনাবেচা হয়, কোন সরকার চাইলেই কি এখন আফিম ট্রেড চিরতরে বন্ধ করতে পারে,সেই সাথে আন্তর্জাতিক ভূ-রাজনীতি, সমাজ, ধর্ম, অর্থনীতি, ভাষা, সংস্কৃতি, স্বাধীনতা ও যুদ্ধের মত জটিল কিছু বিষয়ও এর সাথে অঙ্গাঅঙ্গিভাবে জড়িত। </p> -->
     </div>
+    <script>
+        const chapters = document.querySelectorAll('.chapter');
+        const progress = document.getElementById('progress');
+        const progressIndicator = document.getElementById('progress-indicator');
+
+        function updateProgress() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollPercentage = (scrollTop / documentHeight) * 100;
+
+            progress.style.width = scrollPercentage + '%';
+            progressIndicator.textContent = Math.round(scrollPercentage) + '% Read';
+
+            chapters.forEach(chapter => {
+                const chapterTop = chapter.offsetTop;
+                const chapterBottom = chapterTop + chapter.offsetHeight;
+                if (scrollTop + windowHeight > chapterTop && scrollTop < chapterBottom) {
+                    chapter.classList.add('read');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('resize', updateProgress);
+        updateProgress();
+    </script>
 </body>
 </html>
